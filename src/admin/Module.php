@@ -1,6 +1,6 @@
 <?php
 
-namespace malankateam\modules\trello\admin;
+namespace malankateam\luya\trello\admin;
 
 /**
  * Trello Admin Module.

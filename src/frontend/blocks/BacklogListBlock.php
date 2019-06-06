@@ -7,6 +7,7 @@ use luya\cms\base\PhpBlock;
 use luya\cms\frontend\blockgroups\ProjectGroup;
 use luya\cms\helpers\BlockHelper;
 use Trello\Client;
+use luya\admin\models\Logger;
 
 /**
  * Backlog List Block.
@@ -40,7 +41,7 @@ class BacklogListBlock extends PhpBlock
      */
     public function name()
     {
-        return 'Backlog List Block';
+        return 'Trello Backlog List Block';
     }
     
     /**
@@ -81,21 +82,35 @@ class BacklogListBlock extends PhpBlock
      */
     private function getClient()
     {
-        $client = new Client();
+        if (empty($this->getVarValue('tokenOrLogin')) || empty($this->getVarValue('password'))) {
+            Logger::warning('Do not set Trello API credentials for Trello extension');
+            return false;
+        }
 
-        $client->authenticate(
-            $this->getVarValue('tokenOrLogin'),
-            $this->getVarValue('password'),
-            Client::AUTH_URL_CLIENT_ID
-        );
+        try {
+            $client = new Client();
 
-        return $client;
+            $client->authenticate(
+                $this->getVarValue('tokenOrLogin'),
+                $this->getVarValue('password'),
+                Client::AUTH_URL_CLIENT_ID
+            );
+
+            return $client;
+        } catch(\Exception $exception) {
+            Logger::warning('Cannot create client object for work Trello API');
+            return false;
+        }
     }
 
     private function getAllBoards()
     {
         $client = $this->getClient();
-        $boards = $client->api('member')->boards()->all();
+        if ($client) {
+            $boards = $client->api('member')->boards()->all();
+        } else {
+            $boards = [];
+        }
         return $boards;
     }
 
