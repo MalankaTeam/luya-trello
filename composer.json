@@ -1,26 +1,31 @@
 {
-	"name" : "VENDOR/NAME",
-	"description" : "",
+	"name" : "malankateam/luya-trello",
+	"description" : "Trello toolkits (ready frontend blocks)",
 	"type" : "luya-extension",
-	"keywords" : ["luya"],
+	"keywords" : ["luya", "yii2", "trello"],
 	"license": "MIT",
 	"authors" : [
 		{
-			"name": "",
-			"email": ""
+			"name": "Robert Kuznetsov",
+			"email": "robert@malanka.pro"
 		}
 	],
+	"require": {
+		"luyadev/luya-core" : "^1.0",
+		"luyadev/luya-module-admin" : "^2.0",
+		"cdaguerre/php-trello-api": "@dev"
+	},
 	"require-dev" : {
 	    "luyadev/luya-testsuite" : "~1.0.0"
 	},
 	"autoload" : {
 		"psr-4" : {
-			"VENDOR\\NAME\\" : "src/"
+			"malankateam\\luya\\trello\\" : "src/"
 		}
 	},
 	"autoload-dev" : {
        "psr-4" : {
-           "VENDOR\\NAME\\tests\\" : "tests/"
+           "malankateam\\luya\\trello\\tests\\" : "tests/"
        }
     }
 }

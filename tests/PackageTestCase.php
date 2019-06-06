@@ -1,5 +1,6 @@
 <?php
-namespace VENDOR\NAME\tests;
+
+namespace malankateam\luya\trello\tests;
 
 use luya\testsuite\cases\WebApplicationTestCase;
 
