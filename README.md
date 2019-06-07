@@ -15,9 +15,10 @@ the ready scratch features from the Luya module.
 ## Installation
 
 Install the module trough composer:
-~~~
+
+```
 composer require malankateam/luya-trello:@dev
-~~~
+```
 
 Add the modules to your project go into the modules section of your config and insert the code:
 
