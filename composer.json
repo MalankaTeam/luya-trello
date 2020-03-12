@@ -1,7 +1,7 @@
 {
 	"name" : "malankateam/luya-trello",
 	"description" : "Trello toolkits (ready frontend blocks)",
-	"type" : "luya-extension",
+	"type" : "luya-module",
 	"keywords" : ["luya", "yii2", "trello"],
 	"license": "MIT",
 	"authors" : [
